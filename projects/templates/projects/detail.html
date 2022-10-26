@@ -4,13 +4,16 @@
 
 <main>
     <div>
-        <h1>{{ project.name }}</h1>
-        <p>{{ project.description }}</p>
+        <h1>Test Project Name</h1>
+        <p>Test Project Description</p>
         <!-- {% if not task %}
             <p>This project has no tasks</p>
         {% endif %} -->
         <h2>Tasks</h2>
         <!-- {% if project %} -->
+        <p>
+            <a href="{% url 'create_task' %}">Create a new task</a>
+        </p>
             <table>
                 <thead>
                     <tr>
@@ -22,12 +25,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for task in tasks %}
                         <tr>
-                            <td>{{ show_project.name }}</td>
+                            <td>Test</td>
                         </tr>
                     <!-- <tr>{{ value|yesno }}</tr> -->
-                    {% endfor %}
                     <!-- <td>Test</td> -->
                 </tbody>
             </table>
