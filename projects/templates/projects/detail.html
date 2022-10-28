@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<main>
-    <div>
-        <h1>Test Project Name</h1>
-        <p>Test Project Description</p>
-        <!-- {% if not task %}
-            <p>This project has no tasks</p>
-        {% endif %} -->
-        <h2>Tasks</h2>
-        <!-- {% if project %} -->
-        <p>
-            <a href="{% url 'create_task' %}">Create a new task</a>
-        </p>
+    <main>
+        <div>
+            <h1>{{ project.name }}</h1>
+            <p>{{ project.description }}</p>
+            <h2>Tasks</h2>
+            <p>
+                <a href="{% url 'create_task' %}">Create a new task</a>
+            </p>
+            {% if project.tasks.all %}
             <table>
                 <thead>
                     <tr>
@@ -25,17 +21,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for project in project.tasks.all %}
                         <tr>
-                            <td>Test</td>
+                            <td>{{ project.name }}</td>
+                            <td>{{ project.assignee }}</td>
+                            <td>{{ project.start_date }}</td>
+                            <td>{{ project.due_date }}</td>
+                            <td>{{ item.is_completed|yesno:"yes, no" }}</td>
                         </tr>
-                    <!-- <tr>{{ value|yesno }}</tr> -->
-                    <!-- <td>Test</td> -->
+                    {% endfor %}
                 </tbody>
             </table>
-        <!-- {% else %}
-            <p>This project has no tasks</p> -->
-        <!-- {% endif %} -->
-    </div>
-</main>
-
-{% endblock content %}
+            {% else %}
+                <p>This project has no tasks</p>
+            {% endif %}
+            </div>
+        </main>
+    {% endblock content %}

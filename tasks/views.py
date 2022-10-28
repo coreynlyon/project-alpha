@@ -22,8 +22,16 @@ def create_task(request):
 
 @login_required
 def show_my_tasks(request):
-    projects = Task.objects.filter(assignee=request.user)
+    task = Task.objects.filter(assignee=request.user)
     context = {
-        "projects": projects,
+        "task": task,
     }
     return render(request, "tasks/mine.html", context)
+
+# @login_required
+# def show_my_tasks(request):
+#     task = Task.objects.all()
+#     context = {
+#         "task": task
+#     }
+#     return render(request, "tasks/mine.html", context)

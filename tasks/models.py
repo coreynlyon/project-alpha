@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-
 from projects.models import Project
 
 # Create your models here.
@@ -23,5 +22,5 @@ class Task(models.Model):
         null=True
     )
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
