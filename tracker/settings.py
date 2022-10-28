@@ -1,4 +1,5 @@
 # flake8: noqa
+# Added this comment to create a change so that git will allow a commit.
 
 """
 Django settings for tracker project.
